@@ -235,8 +235,15 @@
     if (document.location.search.match(/type=embed/gi)) {
         window.parent.postMessage("resize", "*");
     }
+    fetch('https://api.github.com/users/NidhoggDJoking/repos').then(res=>{
+        return res.json()
+    }).then(res2=>{
+        console.log('我的Github列表数据',res2);
+        // {name, description, html_url, pushed_at}
+    })
     </script>
     <script>
+    // 背景画布
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
 
