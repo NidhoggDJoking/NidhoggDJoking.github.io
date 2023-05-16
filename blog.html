@@ -240,25 +240,25 @@
         return res.json()
     }).then(res2=>{
         console.log('我的Github列表数据',res2);
-         var html = template('tpl-repos-list', res2);
+         var html = template('tpl-repos-list', {data:res2});
          $('.news-grid').html(html);
         // {name, description, html_url, pushed_at}
     })
     </script>
     <script type="text/html" id="tpl-repos-list">
-        <%for(var i = 0;i < data.length;i++){%>
+        {{each data}}
             <article class="news-item box">
                 <div class="news-item__image-wrap overlay overlay--45">
-                    <div class="news-item__date">{{data[i]['pushed_at']}}</div>
-                      <a class="news-item__link" href="{{data[i]['html_url']}}"></a>
+                    <div class="news-item__date">{{$value.pushed_at}}</div>
+                      <a class="news-item__link" href="{{$value.html_url}}"></a>
                       <img class="cover lazyload" src="assets/img/image_25.jpg" alt="" />
                     </div>
                  <div class="news-item__caption">
-                    <h2 class="title title--h4">{{data[i]['name']}}</h2>
-                    <p>{{data[i]['description']}}</p>
+                    <h2 class="title title--h4">{{$value.name}}</h2>
+                    <p>{{$value.description}}</p>
                  </div>
             </article>
-         <%}%>
+         {{/each data}}
     </script>
     <script>
     // 背景画布
