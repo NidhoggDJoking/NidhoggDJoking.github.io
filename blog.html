@@ -240,6 +240,8 @@
         return res.json()
     }).then(res2=>{
         console.log('我的Github列表数据',res2);
+         var html = template('tpl-repos-list', res2);
+         $('.news-grid').html(html);
         // {name, description, html_url, pushed_at}
     })
     </script>
